@@ -20,7 +20,7 @@ def main():
 
 	#hopping over videos
 	for i in range(repetition):
-		
+
 		#get the youtube video site
 		page = requests.get(youtube_url)
 		
@@ -30,17 +30,17 @@ def main():
 		#get the list of handles of suggested videos
 		next_video_url_handle_list = tree.xpath("//ul[@id='watch-related']/li/div[@class='content-wrapper']//a/@href")
 		
-		#get pseudo-random next video url
+		#get pseudo-random next video url, no errors in getting url handle, so next_video_url_handle_list is not wrapped in tryGettingString()
 		random_int = randint(0, len(next_video_url_handle_list)-1)
 		next_video_url = 'https://www.youtube.com' + next_video_url_handle_list[random_int]
 
 		#get the list of titles of suggested videos 
-		next_video_title_list = tree.xpath(("//ul[@id='watch-related']/li[" + str(random_int) + "]/div[@class='content-wrapper']//span[@class='title']//text()"))
-		next_video_title = tryGettingString(next_video_title_list, 0)
+		next_video_title_list = tree.xpath(("//ul[@id='watch-related']/li/div[@class='content-wrapper']//span[@class='title']//text()"))
+		next_video_title = tryGettingString(next_video_title_list, random_int)
 
 		#get the list of durations of suggested videos	
-		next_video_duration_list = tree.xpath(("//ul[@id='watch-related']/li[" + str(random_int) + "]/div[@class='thumb-wrapper']//span[@class='video-time']//text()"))
-		next_video_duration = tryGettingString(next_video_duration_list, 0)
+		next_video_duration_list = tree.xpath(("//ul[@id='watch-related']/li/div[@class='thumb-wrapper']//span[@class='video-time']//text()"))
+		next_video_duration = tryGettingString(next_video_duration_list, random_int)
 
 		#switch the urls
 		youtube_url = next_video_url
