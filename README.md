@@ -27,10 +27,6 @@ Install
 
 `sudo python setup.py install`
 
-More details
--
-A script that loads a youtube site, pseudo-randomly picks one of the suggested youtube videos and repeats forever (if you want).
-
 Contribute
 -
 1. Fork the project
@@ -40,3 +36,7 @@ Contribute
 License
 -
 MIT
+
+Description
+-
+A script that loads a youtube site, pseudo-randomly picks one of the suggested youtube videos and repeats forever (if you want).
